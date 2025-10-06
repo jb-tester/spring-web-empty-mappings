@@ -1,8 +1,6 @@
 package org.example.springwebemptymappings;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class RootController {
@@ -11,9 +9,15 @@ public class RootController {
     // no gutter icon for method
     // no error for the missing path template matching @PathVariable
     // Structure shows the endpoint, but incorrect HTTP request is generated in the
+    // incorrect HTTP Method is shown in Structure view
     @GetMapping
     public String root(@PathVariable String name) {
         return "root";
+    }
+
+    @PostMapping("/")
+    public String post(@RequestBody String body) {
+        return "post "+body;
     }
 
     // this mapping is shown in Endpoints, but other problems are the same
